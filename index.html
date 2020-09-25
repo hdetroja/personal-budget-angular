@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="og:title" property="og:title" content="Personal Budget Management App"><!-- This is a SEO Change Open graph tag-->
     <title>Personal Budget</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-
-    <nav> <!-- This is a Semantic HTML change using nav tag instead of div-->
+    <link rel="canonical" href="http://142.93.254.129/pb/"> <!--This is a SEO Change to avoid duplication-->
+    <nav role = "navigation"> <!-- This is a A11y change-->
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="about.html">About</a></li>
@@ -18,15 +19,15 @@
         </ul>
     </nav>
 
-    <section class="hero"> <!-- This is a Semantic HTML change using section tag instead of div-->
+    <article class="hero"> <!-- This is a Semantic HTML change using article tag instead of div-->
         <h1>Personal Budget</h1>
         <h2>A personal-budget management app</h2>
-    </section>
+    </article>
 
-    <div class="container center">
+    <section class="container center"> <!-- This is a Semantic HTML change using section tag instead of div-->
 
         <section class="page-area">
-
+            <h3>This app will help you manage you expenses based on your salary <abbr title="Per Annum">p.a.</abbr></h3><!--This is a A11y Change using abbr tag-->
             <div class="text-box">
                 <h1>Stay on track</h1>
                 <p>
@@ -93,7 +94,7 @@
 
         </section>
 
-    </div>
+    </section>
 
     <footer class="bottom"> <!-- This is a Semantic HTML change using footer tag instead of div-->
         <section class="center">

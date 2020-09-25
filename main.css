@@ -36,7 +36,7 @@ nav ul li a:hover  {
     color: #4d5791;
 }
 
-section.hero {
+article.hero {
     height: 350px;
     background-color: #b4c6f0;
     background-image: url('bg.png');
@@ -46,19 +46,19 @@ section.hero {
     padding-top: 40px;
 }
 
-section.hero h1,
-section.hero h2 {
+article.hero h1,
+article.hero h2 {
     text-align: center;
     margin: 0;
 }
 
-section.hero h1 {
+article.hero h1 {
     color: #fff;
     font-size: 4.2em;
     margin-bottom: 20px;
 }
 
-section.hero h2 {
+article.hero h2 {
     color: #4d5791;
 }
 
@@ -95,3 +95,10 @@ section.hero h2 {
         margin: 10px;
     }
 }
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
