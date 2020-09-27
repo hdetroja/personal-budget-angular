@@ -108,20 +108,21 @@
         var dataSource = {
             datasets: [
                 {
-                    data: [30, 350, 90],
+                    data: [],
                     backgroundColor: [
                         '#ffcd56',
                         '#ff6384',
                         '#36a2eb',
                         '#fd6b19',
+                        'red',
+                        'cyan',
+                        'brown',
+                        'green',
+                        'purple'
                     ],
                 }
             ],
-            labels: [
-                'Eat out',
-                'Rent',
-                'Groceries'
-            ]
+            labels: []
         };
         function createChart() {
             var ctx = document.getElementById("myChart").getContext("2d");
