@@ -22,14 +22,14 @@
     },
     {
         "title": "Student Loan",
-        "budget": 400
+        "budget": 300
     },
     {
         "title": "Mobile Plan",
-        "budget": 35
+        "budget": 60
     },
     {
         "title": "Misc",
-        "budget": 20
+        "budget": 50
     }]
 }
