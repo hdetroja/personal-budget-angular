@@ -34,17 +34,13 @@ export class DataService {
   constructor(private http: HttpClient) { }
   // tslint:disable-next-line: typedef
   getBudget() {
-
     this.http.get('http://localhost:3000/budget').subscribe((res: any) => {
       for (let i = 0; i < res.myBudget.length; i++){
       this.dataSource.datasets[0].data[i] = res.myBudget[i].budget;
       this.dataSource.labels[i] = res.myBudget[i].title;
       this.d3jsd[res.myBudget[i].title] = res.myBudget[i].budget;
       this.d3jsl[i] = res.myBudget[i].title;
-
     }
   });
-
-
 }
 }

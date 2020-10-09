@@ -16,7 +16,9 @@ constructor(
   public service: DataService
   ) {}
   ngAfterViewInit(): void {
+    if (this.service.dataSource.datasets[0].data.length === 0){
     this.service.getBudget();
+    }
     setTimeout(() => {
 
       this.createChart();
