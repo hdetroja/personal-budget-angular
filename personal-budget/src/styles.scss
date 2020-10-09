@@ -422,7 +422,7 @@ article.hero h2 {
   color: #4d5791;
 }
 
-.container {
+main {
   padding: 40px;
   width: 100%;
 }
@@ -442,19 +442,16 @@ article.hero h2 {
   text-align: center;
 }
 
-.container div.page-area {
+main article {
   display: inline-block;
   width: 100%;
   max-width: 340px;
   text-align: justify;
   margin: 20px;
 }
-.align {
-  text-align: center;
-}
 
 @media screen and (min-width: 768px) {
-  .container .div.page-area {
+  main {
       margin: 10px;
   }
 }
