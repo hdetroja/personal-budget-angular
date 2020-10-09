@@ -1,88 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Chart } from 'chart.js';
 import { scaleOrdinal } from 'd3-scale';
 import {arc, pie} from 'd3-shape';
 import * as d3 from 'd3';
-import { Data } from '@angular/router';
-import { abort } from 'process';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'pb-homepage',
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss']
 })
-export class HomepageComponent implements OnInit {
-
-  public d3jsd = {};
-  public d3jsl = [];
-
-  public dataSource = {
-    datasets: [
-        {
-            data: [],
-            backgroundColor: [
-                '#ffcd56',
-                '#ff6384',
-                '#36a2eb',
-                '#fd6b19',
-                '#46b535',
-                '#05e2f1',
-                '#552bec',
-                'red',
-                'blue',
-                'green'
-            ],
-        }
-    ],
-    labels: []
-};
-
-
+export class HomepageComponent implements AfterViewInit {
 constructor(
-  private http: HttpClient,
-  ) {
-    // this.serviceData = this.service.getData();
-    // console.log(this.serviceData);
-   }
+  public service: DataService
+  ) {}
+  ngAfterViewInit(): void {
+    this.service.getBudget();
+    setTimeout(() => {
 
-  ngOnInit(): void {
-
-    // for(var i=0; i< this.serviceData.length; i++){
-    //   this.dataSource.datasets[0].data[i]= this.serviceData[i].budget;
-    //   this.dataSource.labels[i]= this.serviceData[i].title;
-    //   this.createChart();
-    // }
-
-    this.http.get('http://localhost:3000/budget')
-    .subscribe((res: any) => {
-      for (let i = 0; i < res.myBudget.length; i++){
-      this.dataSource.datasets[0].data[i] = res.myBudget[i].budget;
-      this.dataSource.labels[i] = res.myBudget[i].title;
-      this.d3jsd[res.myBudget[i].title] = res.myBudget[i].budget;
-      this.d3jsl[i] = res.myBudget[i].title;
-
-    }
       this.createChart();
-
       this.createD3js();
-  });
-
-
+    }, 500);
   }
   // tslint:disable-next-line: typedef
   createChart() {
     const ctx = document.getElementById('myChart') as HTMLCanvasElement;
     const myPieChart = new Chart(ctx, {
         type: 'pie',
-        data: this.dataSource
+        data: this.service.dataSource
     });
 }
 
   // tslint:disable-next-line: typedef
   createD3js(){
-    const width = 550;
-    const height = 550;
+    const width = 650;
+    const height = 700;
     const margin = 150;
     const radius = Math.min(width, height) / 2 - margin;
 
@@ -94,14 +47,14 @@ constructor(
       .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
 
     const color = scaleOrdinal()
-      .domain(this.d3jsl)
+      .domain(this.service.d3jsl)
       .range(['#ffcd56', '#ff6384', '#36a2eb', '#fd6b19', '#46b535', '#05e2f1', '#552bec']);
 
     const ring = pie()
       .sort(null)
       .value((d: any) => d.value);
 
-    const dataReady = ring(d3.entries(this.d3jsd));
+    const dataReady = ring(d3.entries(this.service.d3jsd));
 
     const angle = arc()
       .innerRadius(radius * 0.5)
